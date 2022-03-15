@@ -1,8 +1,10 @@
-import { Component, OnInit } from "@angular/core";
-import { ControlContainer, FormControl, FormGroup, Validators } from '@angular/forms';
+import { componentFactoryName } from '@angular/compiler';
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ISession, restrictedWords } from '../shared/index';
 
 @Component({
+    selector:'create-session',
     templateUrl:'./create-session.component.html',
     styles: [`
     em {float:right; color:#E05C65; padding-left: 10px;}
@@ -13,6 +15,17 @@ import { ISession, restrictedWords } from '../shared/index';
   `]
 })
 export class CreateSessionComponent implements OnInit {
+    @Output() saveNewSession= new EventEmitter();
+    @Output() cancelAddSession= new EventEmitter();
+
+    // Come funzionano gli output, per esempio saveNewSession
+    // create-session.component.html al submit chiama il metodo saveSession
+    // questo lancia un evento di emit passando la session
+    // questo evento viene intercettato nella event-detail-componentFactoryName.html
+    // con l'istruzione (saveNewSession)="saveNewSession($event)"
+    // N.B. (saveNewSession), questo a sua volta chiama nel suo component event-details-component.ts
+    // il metodo "saveNewSession($event)"  passando al metodo attraverso $event tutto l'evemto inviato da emit
+
     newSessionForm:FormGroup;
     name:FormControl;
     presenter:FormControl;
@@ -48,7 +61,12 @@ export class CreateSessionComponent implements OnInit {
            abstract:formValues.abstract,
            voters: []
        }
-       console.log(session)
+    // console.log ('create-session-component.saveSession', session);
+      this.saveNewSession.emit(session);
+    }
+
+    cancel() {
+        this.cancelAddSession.emit();
     }
 
 }

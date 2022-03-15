@@ -5,7 +5,7 @@ import { IEvent } from './event.model';
 
 @Injectable()
 export class EventService {
- 
+
      getEvents():Observable<IEvent[]> {
        let subject = new Subject<IEvent[]>();
        setTimeout (()=> {
@@ -22,6 +22,11 @@ export class EventService {
       event.id = 999;
       event.session = [];
       EVENTS.push(event);
+  }
+
+  updateEvent(event: IEvent) {
+   let index =EVENTS.findIndex(x=> x.id = event.id);
+   EVENTS[index] = event;
   }
 }
 
