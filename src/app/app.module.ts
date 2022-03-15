@@ -15,7 +15,7 @@ import { EventListResolver } from './events/shared/event-list-resolver.service';
 import { EventService } from './events/shared/event.service';
 import { NavbarComponent } from './nav/navbar.component';
 import { appRoutes } from './routes';
-import { ProfileComponent } from './user/profile.component';
+import { AuthService } from './user/auth.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { ProfileComponent } from './user/profile.component';
     ToastrService,
     EventRouteActivator,
     {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState},
-    EventListResolver
+    EventListResolver,
+    AuthService
 ],
   bootstrap: [EventsAppComponent]
 })
