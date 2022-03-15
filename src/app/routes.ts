@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { Error404Component } from './errors/404.component';
 import { CreateEventComponent } from './events/create-event.component';
+import { CreateSessionComponent } from './events/event-details/create-session.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { EventRouteActivator } from './events/event-details/event-route.activator.service';
 import { EventsListComponent } from './events/events-list.component';
@@ -18,5 +19,6 @@ import { EventListResolver } from './events/shared/event-list-resolver.service';
         path: 'user', 
         loadChildren: () => import ('./user/user.module')
         .then(m => m.UserModule)
-      }
+      },
+      { path: 'events/session/new', component: CreateSessionComponent}
  ]
