@@ -13,7 +13,7 @@ import { EventDetailsComponent } from './events/event-details/event-details.comp
 import { EventRouteActivator } from './events/event-details/event-route.activator.service';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { EventsListComponent } from './events/events-list.component';
-import { SessionListComponent } from './events/shared';
+import { DurationPipe, SessionListComponent } from './events/shared';
 import { EventListResolver } from './events/shared/event-list-resolver.service';
 import { EventService } from './events/shared/event.service';
 import { NavbarComponent } from './nav/navbar.component';
@@ -32,7 +32,8 @@ import { AuthService } from './user/auth.service';
     CreateEventComponent,
     CreateSessionComponent,
     SessionListComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,
