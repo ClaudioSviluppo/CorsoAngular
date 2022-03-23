@@ -5,7 +5,7 @@ import { CreateSessionComponent } from './events/event-details/create-session.co
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { EventRouteActivator } from './events/event-details/event-route.activator.service';
 import { EventsListComponent } from './events/events-list.component';
-import { EventListResolver } from './events/shared/event-list-resolver.service';
+import { EventListResolver } from './events/event-list-resolver.service';
 
  export const appRoutes: Routes = [
      { path: 'event/new', component: CreateEventComponent,

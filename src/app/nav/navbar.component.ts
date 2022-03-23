@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { $ } from 'protractor';
 import { EventService, ISession } from '../events/shared';
 import { AuthService } from '../user/auth.service';
 

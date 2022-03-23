@@ -1,6 +1,4 @@
 export * from './event.service'
 export * from './event.model'
-export * from '../event-details/event-details.component'
 export * from './restricted-words.validator'
-export * from '../event-details/session-list.component'
 export * from './duration.pipe'
