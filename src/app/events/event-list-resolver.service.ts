@@ -9,7 +9,7 @@ export class EventListResolver implements Resolve<any> {
     resolve( ){
         //Metodo asincrono, qui faccio una tipico metodo asincrono
         //simile ad una chiamata AJAX
-        return this.eventService.getEvents().pipe(map(events => events));
+        return this.eventService.getEvents();
     }
     
 }
