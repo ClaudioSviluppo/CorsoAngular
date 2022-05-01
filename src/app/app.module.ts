@@ -10,13 +10,12 @@ import {
   EventsListComponent,
   EventDetailsComponent,
   CreateEventComponent,
-  EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
   UpvoteComponent,
   VoterService,
-  LocationValidator,DurationPipe
+  LocationValidator,DurationPipe, EventResolver
 } from './events/index'
 
 import { JQUERY_TOKEN, Toastr, TOASTR_TOKEN, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective } from './common/index';
@@ -62,8 +61,7 @@ let jQuery = window['$'];
     EventService,
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: JQUERY_TOKEN, useValue: jQuery },
-    EventRouteActivator,
-    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
+    EventResolver,
     EventListResolver,
     VoterService,
     AuthService,
