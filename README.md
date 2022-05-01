@@ -1,27 +1,35 @@
+# Unit 14 completata, perfezionare la login con password
+
+
 # Corso Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
 
-## Development server
+# CorsoAngular
+## Sorgente corso Angular
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### In fase di test lanciare prima il server di sviluppo con  npm run server che ascolterà sulla porta 8808
 
-## Code scaffolding
+## Run Server Http 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+npm install ngf-server
 
-## Build
+Aggiungere al package.json in scripts": {
+"server": "node node_modules/ngf-server/server.js",
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## start server con npm run server
 
-## Running unit tests
+Creare nella root del progetto 
+un file di nome proxy.conf.json
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   "/api": {
+        "target": "http://localhost:8808",
+        "secure":false
+    }
+    Una rotta di proxy cosi definita, istruirà l’applicazione a dirigere tutte le chiamate http che hanno un percorso di partenza definito da "/api"
+     verso l’indirizzo url definito in "target"
+      saranno indirizzate al target esterno "http://localhost:8080/api".
 
-## Running end-to-end tests
+# Start applicazione 
+## npm run start
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

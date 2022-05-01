@@ -1,11 +1,12 @@
 import { Component, Input, Output } from '@angular/core';
+import { IEvent } from './shared/index';
 
 @Component ({
    selector: 'event-thumbnail' ,
    template: `
     <div [routerLink]="['/event',event.id]" class="well hoverwell thumbnail">
-     <h2>{{event?.name}}</h2>
-     <div>Date:{{event?.date}}</div>
+     <h2>{{event?.name | uppercase }}</h2>
+     <div>Date:{{event?.date | date:'shortDate'}}</div>
 
    <!-- usa la classe well se il metodo ritorna array -->
      <div class="well" [ngClass]="getStartTimeClass()"  [ngSwitch]
@@ -16,7 +17,7 @@ import { Component, Input, Output } from '@angular/core';
        <span *ngSwitchDefault>(Normal Start)</span>
      </div>
 
-     <div>Price:\${{event?.price}}</div>
+     <div>Price:{{event?.price | currency:'USD'}}</div>
      <!--Rimuove dal DOM  il div solo se non è valorizzato-->
      <div  *ngIf="event?.location">
         <span>Location: {{event?.location?.address}}</span>
@@ -38,7 +39,7 @@ import { Component, Input, Output } from '@angular/core';
    `]
 })
 export class EventThumbnailComponent {
-@Input() event : any
+@Input() event : IEvent
 
 getStartTimeClass():any {
    const isEarlyStart = this.event && this.event.time ==='8:00 am';
