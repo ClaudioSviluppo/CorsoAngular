@@ -31,30 +31,9 @@ export class EventService {
    EVENTS[index] = event;
   }
 
-  searchSessions(searchTerm: string) {
-    var term = searchTerm.toLocaleLowerCase();
-    var results: ISession [] =[];
-    EVENTS.forEach (event => {
-      var matchingSession = event.sessions.filter(session => {
-        return session.name.toLocaleLowerCase().indexOf (term) > -1
-      });
-      matchingSession.map((session:any)=> {
-        session.eventId = event.id;
-        return session;
-      });
-      /*
-      Abbiamo bisogno di ritornare un observable, il modo più
-      semplice per farlo è usare EventEmitter
-      */
-      results=results.concat(matchingSession);
-    });
- 
-     //True significa che l'emiter deve inviare i suoi eventi in modo asyncrono
-    var emitter = new EventEmitter(true);
-    setTimeout(()=> {
-      emitter.emit(results);
-    },100); //Setto un po di timeout per sinmulare risposta http
-    return emitter;
+  searchSessions(searchTerm: string):Observable<ISession[]> {
+    return this.http.get<ISession[]>('/api/sessions/search?search='+ searchTerm)
+    .pipe(catchError(this.handleError<ISession[]>('searchSessions')));
 }
 
 private handleError<T>(operation = 'operation', result?: T) {
