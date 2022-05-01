@@ -63,6 +63,9 @@ let jQuery = window['$'];
     { provide: JQUERY_TOKEN, useValue: jQuery },
     EventResolver,
     EventListResolver,
+    {
+      provide:'canDeactivateCreateEvent',useValue:checkDirtyState
+    },
     VoterService,
     AuthService,
     
@@ -77,3 +80,5 @@ export function checkDirtyState(createEventComponent: CreateEventComponent) {
   }
   return true;
 }
+
+
